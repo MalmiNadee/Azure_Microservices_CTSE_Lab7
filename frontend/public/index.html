@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Azure Microservices Lab</title>
+</head>
+<body>
+
+<h1>Azure Microservices System</h1>
+
+<button onclick="loadItems()">Load Items</button>
+<button onclick="loadOrders()">Load Orders</button>
+<button onclick="loadPayments()">Load Payments</button>
+
+<pre id="output"></pre>
+
+<script>
+
+const API = "https://gateway.yellowground-b92ed158.centralindia.azurecontainerapps.io";
+
+async function loadItems(){
+ const res = await fetch(API + "/items");
+ const data = await res.json();
+ document.getElementById("output").innerText = JSON.stringify(data,null,2);
+}
+
+async function loadOrders(){
+ const res = await fetch(API + "/orders");
+ const data = await res.json();
+ document.getElementById("output").innerText = JSON.stringify(data,null,2);
+}
+
+async function loadPayments(){
+ const res = await fetch(API + "/payments");
+ const data = await res.json();
+ document.getElementById("output").innerText = JSON.stringify(data,null,2);
+}
+
+</script>
+
+</body>
+</html>
